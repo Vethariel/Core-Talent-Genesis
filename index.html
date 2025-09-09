@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Core Talent – Genesis | Presentación</title>
+  <style>
+    :root{
+      --bg:#0b0b0f;           /* fondo casi negro */
+      --fg:#e7e7ea;           /* texto principal */
+      --muted:#a5a7b3;        /* texto secundario */
+      --accent:#e01e37;       /* rojo eclipse */
+      --gold:#e3b341;         /* dorado discreto */
+      --white:#ffffff;
+      --card:#13131a;         /* tarjetas */
+    }
+    html,body{height:100%; margin:0; background:var(--bg); color:var(--fg); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;}
+    .deck{height:100%; display:grid; place-items:center;}
+    .slide{display:none; width:min(1100px, 92vw); height:min(680px, 84vh); background:radial-gradient(1200px 600px at 100% 0%, rgba(224,30,55,0.08), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)); border:1px solid rgba(255,255,255,0.06); border-radius:24px; padding:48px; box-sizing:border-box; box-shadow:0 10px 30px rgba(0,0,0,0.35);}
+    .slide.active{display:block; animation:fade .28s ease-out;}
+    @keyframes fade{from{opacity:.6; transform:translateY(6px)} to{opacity:1; transform:none}}
+
+    h1,h2{margin:0 0 .6rem 0}
+    h1{font-size:clamp(28px, 4.2vw, 48px); letter-spacing:.2px}
+    h2{font-size:clamp(20px, 2.8vw, 30px); color:var(--muted); font-weight:600}
+    p{line-height:1.5; font-size:clamp(16px, 1.6vw, 19px); color:var(--fg)}
+    ul{margin:.6rem 0 0 1.2rem; line-height:1.55; font-size:clamp(16px, 1.5vw, 18px)}
+    .accent{color:var(--accent)}
+    .gold{color:var(--gold)}
+    .muted{color:var(--muted)}
+
+    .footer{position:absolute; bottom:20px; left:48px; right:48px; display:flex; align-items:center; justify-content:space-between; color:var(--muted); font-size:14px}
+    .badge{display:inline-flex; align-items:center; gap:.5rem; padding:.35rem .6rem; border:1px solid rgba(255,255,255,.08); border-radius:999px; background:rgba(255,255,255,.03)}
+    .kbd{border:1px solid rgba(255,255,255,.25); padding:.12rem .4rem; border-radius:6px; font-weight:600; font-size:12px}
+
+    .grid{display:grid; gap:18px}
+    .cols-2{grid-template-columns: 1.1fr 1fr}
+    .card{background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:18px; padding:18px}
+
+    /* logo minimal */
+    .logo{display:flex; align-items:center; gap:.8rem}
+    .logo svg{width:30px; height:30px}
+    .logo .word{font-weight:700; letter-spacing:.5px}
+
+    /* bullets lindos */
+    li{position:relative; list-style:none; margin:.2rem 0 .35rem 0; padding-left:1.1rem}
+    li::before{content:""; position:absolute; left:0; top:.7em; width:.5rem; height:.5rem; background:conic-gradient(from 0deg, var(--accent), var(--gold)); border-radius:50%}
+
+    /* barra de progreso */
+    .progress{position:fixed; left:0; bottom:0; height:4px; background:linear-gradient(90deg, var(--accent), var(--gold)); width:0}
+
+    /* modo impresión */
+    @media print{
+      .slide{display:block; page-break-after:always; height:auto; width:auto}
+      .footer, .progress, .hint{display:none}
+      body{background:white; color:#111}
+    }
+
+    .hint{position:fixed; bottom:12px; right:16px; color:var(--muted); font-size:13px; opacity:.9}
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck">
+
+    <!-- SLIDE 1: Portada -->
+    <section class="slide active" data-title="Portada">
+      <div class="logo">
+        <svg viewBox="0 0 64 64" aria-label="logo">
+          <defs>
+            <radialGradient id="g" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#e01e37"/>
+              <stop offset="60%" stop-color="#a10f24"/>
+              <stop offset="100%" stop-color="#0b0b0f"/>
+            </radialGradient>
+          </defs>
+          <circle cx="32" cy="32" r="18" fill="url(#g)"/>
+          <path d="M10 32h44" stroke="#e3b341" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="word">Core Talent <span class="accent">– Genesis</span></div>
+      </div>
+      <h1>Prototipo académico de Gestión del Capital Humano</h1>
+      <h2>Integración de atracción, desarrollo, retención y salida con analítica y ML</h2>
+      <p class="muted">Autores: <em>[Nombres del equipo]</em> • 3 Ingeniería de Sistemas + 1 Ingeniería Industrial</p>
+      <div class="footer">
+        <span class="badge">Presiona <span class="kbd">←</span> <span class="kbd">→</span> o usa clic/tocar</span>
+        <span class="muted">v1.0 • Sept 2025</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: Historia engaging -->
+    <section class="slide" data-title="Historia engaging">
+      <h1>El origen: experiencia viva en AutoMás</h1>
+      <div class="grid cols-2">
+        <div class="card">
+          <h2>Dolores que vimos</h2>
+          <ul>
+            <li>Talento brillante <strong>no reconocido</strong> → renuncias costosas.</li>
+            <li>Falta de formación en administrativos → aprender a pulso en prácticas.</li>
+            <li>Clima laboral descuidado → <strong>rotación alta</strong> y desgaste cross-funcional.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Respuesta que proponemos</h2>
+          <ul>
+            <li>Ver el ciclo de talento como un <strong>sistema integrado</strong>.</li>
+            <li>Medir, visualizar y <strong>anticipar</strong> para decidir mejor.</li>
+            <li>Usar IA como apoyo, nunca como reemplazo del criterio humano.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer">
+        <span class="muted">Core Talent – Genesis</span>
+        <span class="muted">Historia → Alcance → Técnica → Roles → Cierre</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: Alcance del proyecto -->
+    <section class="slide" data-title="Alcance">
+      <h1>Alcance del proyecto</h1>
+      <div class="grid cols-2">
+        <div class="card">
+          <h2>Módulos clave</h2>
+          <ul>
+            <li>Atracción y selección</li>
+            <li>Desarrollo</li>
+            <li>Retención</li>
+            <li>Salida laboral</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Valor agregado</h2>
+          <ul>
+            <li>Datos centralizados en <strong>MongoDB</strong>.</li>
+            <li>Modelos ML: <em>riesgo de renuncia</em> y <em>aceptación de oferta</em>.</li>
+            <li>Dashboards con métricas y predicciones accionables.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="muted">La narrativa guía el diseño: evitar pérdida de talento, fortalecer formación y escuchar al empleado.</p>
+      <div class="footer"><span></span><span class="muted">Alcance</span></div>
+    </section>
+
+    <!-- SLIDE 4: Enfoque técnico -->
+    <section class="slide" data-title="Técnica">
+      <h1>Enfoque técnico</h1>
+      <div class="grid cols-2">
+        <div class="card">
+          <h2>Arquitectura</h2>
+          <ul>
+            <li>MongoDB como repositorio flexible por módulo.</li>
+            <li>API ligera para scoring e integración.</li>
+            <li>Exportadores a CSV/Sheets para visualización.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Modelos de ML</h2>
+          <ul>
+            <li><strong>Attrition</strong>: prob. de renuncia 60–90 días.</li>
+            <li><strong>Oferta</strong>: prob. de aceptación o TTF.</li>
+            <li>Probabilidades calibradas y umbrales con política.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="muted">Nota: los modelos no son “extra”, forman parte del aprendizaje (diplomados de IA).</p>
+      <div class="footer"><span></span><span class="muted">Base técnica</span></div>
+    </section>
+
+    <!-- SLIDE 5: Roles del equipo -->
+    <section class="slide" data-title="Roles">
+      <h1>Plan de trabajo y roles</h1>
+      <div class="grid cols-2">
+        <div class="card">
+          <h2>Daniel – Lógica & ML</h2>
+          <ul>
+            <li>Definir colecciones y flujos de los 4 módulos.</li>
+            <li>Implementar y entrenar los 2 modelos ML.</li>
+            <li>Integrar predicciones a los dashboards.</li>
+          </ul>
+          <h2>Ing. Industrial</h2>
+          <ul>
+            <li>Procesos organizacionales y casos de uso.</li>
+            <li>Métricas de rotación, desempeño y clima.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Ing. Sistemas A</h2>
+          <ul>
+            <li>MongoDB: colecciones e índices.</li>
+            <li>Pipelines de agregación & datos sintéticos.</li>
+          </ul>
+          <h2>Ing. Sistemas B</h2>
+          <ul>
+            <li>Interfaz básica + dashboards.</li>
+            <li>Automatizaciones y conexión con scoring.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer"><span></span><span class="muted">Equipo</span></div>
+    </section>
+
+    <!-- SLIDE 6: Cierre -->
+    <section class="slide" data-title="Cierre">
+      <h1>Entregables y mensaje final</h1>
+      <div class="grid cols-2">
+        <div class="card">
+          <h2>Entregables</h2>
+          <ul>
+            <li>Justificación (historia engaging) y alcance.</li>
+            <li>Esquema de colecciones MongoDB.</li>
+            <li>Prototipo por módulo con datos de prueba.</li>
+            <li>Modelos ML integrados.</li>
+            <li>Dashboard con métricas y predicciones.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Mensaje</h2>
+          <p>Core Talent – <span class="accent">Genesis</span> es más que un ejercicio técnico: es una respuesta a un problema real. Escuchar, desarrollar y retener el talento reduce la rotación, cuida el clima y potencia el desempeño.</p>
+          <p class="gold"><strong>Siguiente paso:</strong> aprobar el concepto y asignar tareas del Sprint 1.</p>
+        </div>
+      </div>
+      <div class="footer">
+        <span class="muted">Gracias</span>
+        <span class="muted">Fin</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="progress" id="progress"></div>
+  <div class="hint">← / → para navegar • <span class="kbd">P</span> para imprimir</div>
+
+  <script>
+    (function(){
+      const slides=[...document.querySelectorAll('.slide')];
+      let i=0;
+      const progress=document.getElementById('progress');
+
+      function show(n){
+        i=(n+slides.length)%slides.length;
+        slides.forEach((s,idx)=>s.classList.toggle('active', idx===i));
+        progress.style.width = ((i+1)/slides.length*100)+'%';
+        const t = slides[i].dataset.title || `Slide ${i+1}`;
+        document.title = `${t} – Core Talent – Genesis`;
+        location.hash = '#'+(i+1);
+      }
+      function next(){show(i+1)}
+      function prev(){show(i-1)}
+
+      document.addEventListener('keydown',e=>{
+        if(e.key==='ArrowRight' || e.key==='PageDown' || e.key===' '){ next(); }
+        if(e.key==='ArrowLeft'  || e.key==='PageUp'   || e.key==='Backspace'){ prev(); }
+        if(e.key.toLowerCase()==='p'){ window.print(); }
+      });
+
+      document.getElementById('deck').addEventListener('click', e=>{
+        // Clic en lado derecho → siguiente; izquierdo → anterior
+        const x = e.clientX;
+        if(x > window.innerWidth/2) next(); else prev();
+      });
+
+      window.addEventListener('hashchange',()=>{
+        const n=parseInt(location.hash.replace('#','')); if(!isNaN(n)) show(n-1);
+      });
+
+      // inicial
+      const start=parseInt(location.hash.replace('#','')); show(isNaN(start)?0:start-1);
+    })();
+  </script>
+</body>
+</html>
